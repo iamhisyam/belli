@@ -3,7 +3,6 @@ import Stats from "@/components/dashboard/stats";
 import { DataTable } from "@/components/dashboard/dashtable";
 import { columns } from "@/components/dashboard/columns";
 import { getData } from "@/lib/data";
-import ModalOrders from "@/components/dashboard/modalorders";
 export default async function Dashboard() {
   const data = await getData();
 

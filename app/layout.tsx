@@ -6,6 +6,8 @@ import { CollaborativeApp } from "@/app/CollaborativeApp";
 import { Room } from "@/app/Room";
 import { cn } from "@/lib/utils";
 import UIWrapper from "@/components/ui/wrapper";
+import { AppProvider } from "@/context/AppContext";
+import ModalOrders from "@/components/dashboard/modal-orders";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,8 +31,10 @@ export default function RootLayout({
       <body className="  h-full bg-zinc-900 text-white">
         {/* <ProgressBar />
       <Nav /> */}
-
-        <UIWrapper>{children}</UIWrapper>
+        <AppProvider>
+          <UIWrapper>{children}</UIWrapper>
+          <ModalOrders />
+        </AppProvider>
       </body>
     </html>
   );

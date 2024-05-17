@@ -32,6 +32,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+
+import { useApp } from "@/context/AppContext"
+
 const navigation = [
   {
     name: "Dashboard",
@@ -88,7 +91,15 @@ const navigation = [
   { name: "Manual", href: "#", icon: LinkBreak2Icon, current: false },
 ];
 
+
 export default function SideBar() {
+
+  const { orderOpened, setOrderOpened } = useApp();
+
+  const toggleOrderOpened = () => {
+    setOrderOpened(!orderOpened);
+  };
+
   return (
     <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-zinc-900 px-6 pb-4 ring-1 ring-white/10">
       <div className="flex h-16 shrink-0 items-center justify-between">
@@ -120,7 +131,10 @@ export default function SideBar() {
             className="h-5 w-5 text-white"
             aria-hidden="true"
           />
-          <PencilSquareIcon className="h-5 w-5 text-white" aria-hidden="true" />
+          <PencilSquareIcon
+            onClick={toggleOrderOpened}
+            className="h-5 w-5 text-white cursor-pointer"
+            aria-hidden="true" />
         </div>
       </div>
       <nav className="flex flex-1 flex-col">
